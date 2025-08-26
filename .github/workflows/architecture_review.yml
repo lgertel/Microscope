@@ -1,1 +1,14 @@
-# YAML template not available
+name: Software Architecture Review
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  architecture-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          prompt: |
+            Review this PR for architecture best practices, SOLID principles, security vulnerabilities, and design patterns.
+            Focus on code quality, maintainability, and potential technical debt.
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
